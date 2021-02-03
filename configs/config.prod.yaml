@@ -1,0 +1,42 @@
+app:
+  project_name: "SAAA"
+  web_base_url: "https://www.saaa.co.th"
+  api_base_url: "https://www.saaa.co.th/api/v1"
+  release: true
+  port: 8080
+
+http_server:
+  read_timeout: 10s
+  write_timeout: 10s
+  read_header_timeout: 10s
+
+swagger_info:
+  host: "www.saaa.co.th/api/v1"
+  title: "SAAA API Docs"
+  description: "SAAA is application to project saaa."
+  version: "v1"
+  enable: false
+
+mysql:
+  host: "localhost"
+  port: "3306"
+  username: ""
+  password: ""
+  database_name: "saaa"
+  driver_name: "mysql"
+  connection_pool:
+    max_open_conns: 50
+    max_idle_conns: 50
+    max_lift_time: 60
+
+storage:
+  bucket_name: "saaa-files-prod"
+  base_url: "https://storage.googleapis.com"
+  default_profile_picture_url: ""
+
+jwt:
+  secret_key: "saaa_jwt_secret"
+  expire_time:
+    day: 1
+    hour: 0
+    minute: 0

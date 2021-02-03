@@ -1,0 +1,66 @@
+definitions:
+  config.SwaggerInfoResult:
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+    type: object
+  guest.refreshTokenRequest:
+    properties:
+      refreshToken:
+        type: string
+    type: object
+  models.Token:
+    properties:
+      accessToken:
+        type: string
+      expirationSecond:
+        type: integer
+      expirationTime:
+        type: string
+      refreshToken:
+        type: string
+    type: object
+info:
+  contact: {}
+  license: {}
+paths:
+  /c/guest/refreshToken:
+    post:
+      consumes:
+      - application/json
+      description: Request RefreshToken
+      parameters:
+      - description: (en, th)
+        in: header
+        name: Accept-Language
+        type: string
+      - description: request body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/guest.refreshTokenRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Token'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/config.SwaggerInfoResult'
+      security:
+      - ApiKeyAuth: []
+      summary: RefreshToken
+      tags:
+      - Authentication
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
